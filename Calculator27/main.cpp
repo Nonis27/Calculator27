@@ -26,6 +26,12 @@ double squareRoot(double a) {
     return std::sqrt(a);
 }
 
+double pythagoreanTheorem(double a, double b) {
+
+    return std::sqrt(a * a + b * b);
+}
+
+
 int main() {
     std::cout << "----Calculator27----" << std::endl;
     std::cout << "1. Add" << std::endl;
@@ -34,23 +40,24 @@ int main() {
     std::cout << "4. Divide" << std::endl;
     std::cout << "5. Raise to power" << std::endl;
     std::cout << "6. Find square root" << std::endl;
-    std::cout << "7. Exit program" << std::endl;
+	std::cout << "7. Pythagorean Theorem" << std::endl;
+    std::cout << "8. Exit program" << std::endl;
 
     while (true) {
         double a, b;
         int choice;
 
-        std::cout << "\nChoose a number between 1-7: ";
+        std::cout << "\nChoose a number between 1-8: ";
         std::cin >> choice;
 
         if (std::cin.fail()) {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "-Invalid input. Please enter a number between 1-7." << std::endl;
+            std::cout << "-Invalid input. Please enter a number between 1-8." << std::endl;
             continue;
         }
 
-        if (choice == 7) {
+        if (choice == 8) {
             std::cout << "Exiting program.";
             break;
         }
@@ -88,8 +95,15 @@ int main() {
                 std::cin >> a;
                 std::cout << "Result: " << squareRoot(a) << std::endl;
                 break;
+            case 7:
+                std::cout << "Enter the length of side A: ";
+                std::cin >> a;
+                std::cout << "Enter the length of side B: ";
+                std::cin >> b;
+                std::cout << "Result: " << pythagoreanTheorem(a, b) << std::endl;
+                break;
             default:
-                std::cout << "Invalid input. Please try entering a number between 1-7." << std::endl;
+                std::cout << "Invalid input. Please try entering a number between 1-8." << std::endl;
         }
     }
     return 0;
