@@ -31,6 +31,120 @@ double pythagoreanTheorem(double a, double b) {
     return std::sqrt(a * a + b * b);
 }
 
+double convertLength() {
+
+    double length;
+    std::string unit;
+    std::string targetUnit;
+
+    while (true) {
+        std::cout << "Enter the length: ";
+        std::cin >> length;
+
+        if (!std::cin.fail()) {
+            // Clear the input buffer after a valid input
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            break;
+
+        }
+
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "-Error, please enter a valid length.\n";
+
+    }
+
+	std::cout << "Enter the unit (km, m, cm, mm): ";
+    std::cin >> unit;
+
+    while (unit != "km" && unit != "m" && unit != "cm" && unit != "mm") {
+        std::cout << "Invalid unit, please enter a valid unit(km, m, cm, mm): ";
+        std::cin >> unit;
+
+    }
+
+    std::cout << "Enter the trarget unit(km, m, cm, mm): ";
+    std::cin >> targetUnit;
+
+    while (targetUnit != "km" && targetUnit != "m" && targetUnit != "cm" && targetUnit != "mm") {
+        std::cout << "Invalid target unit, please enter a valid target unit(km, m, cm, mm): ";
+        std::cin >> targetUnit;
+
+    }
+
+
+    if (unit == "km" && targetUnit == "km") {
+        std::cout << "The length in km is equal to " << length << std::endl;
+
+    }
+    else if (unit == "km" && targetUnit == "m") {
+        std::cout << "The length in m is equal to " << length * 1000 << std::endl;
+
+    }
+    else if (unit == "km" && targetUnit == "cm") {
+        std::cout << "The length in cm is equal to " << length * 100000 << std::endl;
+
+    }
+    else if (unit == "km" && targetUnit == "mm") {
+        std::cout << "The length in mm is equal to " << length * 1000000 << std::endl;
+
+    }
+    else if (unit == "m" && targetUnit == "km") {
+        std::cout << "The length in km is equal to " << length / 1000 << std::endl;
+
+    }
+    else if (unit == "m" && targetUnit == "m") {
+        std::cout << "The length in m is equal to " << length << std::endl;
+
+    }
+    else if (unit == "m" && targetUnit == "cm") {
+        std::cout << "The length in cm is equal to " << length * 100 << std::endl;
+
+    }
+    else if (unit == "m" && targetUnit == "mm") {
+        std::cout << "The length in mm is equal to " << length * 1000 << std::endl;
+
+    }
+    else if (unit == "cm" && targetUnit == "km") {
+        std::cout << "The length in km is equal to " << length / 100000 << std::endl;
+
+    }
+    else if (unit == "cm" && targetUnit == "m") {
+        std::cout << "The length in m is equal to " << length / 100 << std::endl;
+
+    }
+    else if (unit == "cm" && targetUnit == "cm") {
+        std::cout << "The length in cm is equal to " << length << std::endl;
+
+    }
+    else if (unit == "cm" && targetUnit == "mm") {
+        std::cout << "The length in mm is equal to " << length * 10 << std::endl;
+
+    }
+    else if (unit == "mm" && targetUnit == "km") {
+        std::cout << "The length in km is equal to " << length / 1000000 << std::endl;
+
+    }
+    else if (unit == "mm" && targetUnit == "m") {
+        std::cout << "The length in m is equal to " << length / 1000 << std::endl;
+
+    }
+    else if (unit == "mm" && targetUnit == "cm") {
+        std::cout << "The length in cm is equal to " << length / 10 << std::endl;
+
+    }
+    else if (unit == "mm" && targetUnit == "mm") {
+        std::cout << "The length in mm is equal to " << length << std::endl;
+
+    }
+    else {
+        std::cout << "There was an error. ";
+
+    }
+    
+    return 0;
+}
+
 
 int main() {
     std::cout << "----Calculator27----" << std::endl;
@@ -41,23 +155,24 @@ int main() {
     std::cout << "5. Raise to power" << std::endl;
     std::cout << "6. Find square root" << std::endl;
 	std::cout << "7. Pythagorean Theorem" << std::endl;
-    std::cout << "8. Exit program" << std::endl;
+    std::cout << "8. Convert length" << std::endl;
+    std::cout << "9. Exit program" << std::endl;
 
     while (true) {
         double a, b;
         int choice;
 
-        std::cout << "\nChoose a number between 1-8: ";
+        std::cout << "\nChoose a number between 1-9: ";
         std::cin >> choice;
 
         if (std::cin.fail()) {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "-Invalid input. Please enter a number between 1-8." << std::endl;
+            std::cout << "-Invalid input. Please enter a number between 1-9." << std::endl;
             continue;
         }
 
-        if (choice == 8) {
+        if (choice == 9) {
             std::cout << "Exiting program.";
             break;
         }
@@ -102,8 +217,11 @@ int main() {
                 std::cin >> b;
                 std::cout << "Result: " << pythagoreanTheorem(a, b) << std::endl;
                 break;
+            case 8:
+                convertLength();
+                break;
             default:
-                std::cout << "Invalid input. Please try entering a number between 1-8." << std::endl;
+                std::cout << "Invalid input. Please try entering a number between 1-9." << std::endl;
         }
     }
     return 0;
