@@ -15,7 +15,21 @@ double multiply(double a, double b) {
 }
 
 double divide(double a, double b) {
-    return a / b;
+
+    if (b != 0) {
+        return a / b;
+
+    }
+    else if (b == 0){
+        std::cout << "You can't divide a number by 0." << std::endl;
+        return 0;
+
+    }
+    else {
+        return 0;
+
+    }
+    
 }
 
 double raiseToPower(double a, double b) {
