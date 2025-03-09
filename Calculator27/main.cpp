@@ -48,6 +48,7 @@ double pythagoreanTheorem(double a, double b) {
 double convertLength() {
 
     double length;
+    double convertedLength = 0;
     std::string unit;
     std::string targetUnit;
 
@@ -88,73 +89,75 @@ double convertLength() {
 
 
     if (unit == "km" && targetUnit == "km") {
-        std::cout << "The length in km is equal to " << length << std::endl;
+        convertedLength = length;
 
     }
     else if (unit == "km" && targetUnit == "m") {
-        std::cout << "The length in m is equal to " << length * 1000 << std::endl;
+        convertedLength = length * 1000;
 
     }
     else if (unit == "km" && targetUnit == "cm") {
-        std::cout << "The length in cm is equal to " << length * 100000 << std::endl;
+        convertedLength = length * 100000;
 
     }
     else if (unit == "km" && targetUnit == "mm") {
-        std::cout << "The length in mm is equal to " << length * 1000000 << std::endl;
+        convertedLength = length * 1000000;
 
     }
     else if (unit == "m" && targetUnit == "km") {
-        std::cout << "The length in km is equal to " << length / 1000 << std::endl;
+        convertedLength = length / 1000;
 
     }
     else if (unit == "m" && targetUnit == "m") {
-        std::cout << "The length in m is equal to " << length << std::endl;
+        convertedLength = length;
 
     }
     else if (unit == "m" && targetUnit == "cm") {
-        std::cout << "The length in cm is equal to " << length * 100 << std::endl;
+        convertedLength = length * 100;
 
     }
     else if (unit == "m" && targetUnit == "mm") {
-        std::cout << "The length in mm is equal to " << length * 1000 << std::endl;
+        convertedLength = length * 1000;
 
     }
     else if (unit == "cm" && targetUnit == "km") {
-        std::cout << "The length in km is equal to " << length / 100000 << std::endl;
+        convertedLength = length / 100000;
 
     }
     else if (unit == "cm" && targetUnit == "m") {
-        std::cout << "The length in m is equal to " << length / 100 << std::endl;
+        convertedLength = length / 100;
 
     }
     else if (unit == "cm" && targetUnit == "cm") {
-        std::cout << "The length in cm is equal to " << length << std::endl;
+        convertedLength = length;
 
     }
     else if (unit == "cm" && targetUnit == "mm") {
-        std::cout << "The length in mm is equal to " << length * 10 << std::endl;
+        convertedLength = length * 10;
 
     }
     else if (unit == "mm" && targetUnit == "km") {
-        std::cout << "The length in km is equal to " << length / 1000000 << std::endl;
+        convertedLength = length / 1000000;
 
     }
     else if (unit == "mm" && targetUnit == "m") {
-        std::cout << "The length in m is equal to " << length / 1000 << std::endl;
+        convertedLength = length / 1000;
 
     }
     else if (unit == "mm" && targetUnit == "cm") {
-        std::cout << "The length in cm is equal to " << length / 10 << std::endl;
+        convertedLength = length / 10;
 
     }
     else if (unit == "mm" && targetUnit == "mm") {
-        std::cout << "The length in mm is equal to " << length << std::endl;
+        convertedLength = length;
 
     }
     else {
         std::cout << "There was an error. ";
 
     }
+
+    std::cout << "The length in " << targetUnit << " is equal to " << convertedLength << std::endl;
     
     return 0;
 }
