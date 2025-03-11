@@ -3,21 +3,25 @@
 #include <limits>
 
 double add(double a, double b) {
-    return a + b;
+    double result = a + b;
+    return result;
 }
 
 double subtract(double a, double b) {
-    return a - b;
+    double result = a - b;
+    return result;
 }
 
 double multiply(double a, double b) {
-    return a * b;
+    double result = a * b;
+    return result;
 }
 
 double divide(double a, double b) {
 
     if (b != 0) {
-        return a / b;
+        double result = a / b;
+        return result;
 
     }
     else if (b == 0){
@@ -33,16 +37,18 @@ double divide(double a, double b) {
 }
 
 double raiseToPower(double a, double b) {
-    return std::pow(a, b);
+    double result = std::pow(a, b);
+    return result;
 }
 
 double squareRoot(double a) {
-    return std::sqrt(a);
+    double result = std::sqrt(a);
+    return result;
 }
 
 double pythagoreanTheorem(double a, double b) {
-
-    return std::sqrt(a * a + b * b);
+    double result = std::sqrt(a * a + b * b);
+    return result;
 }
 
 double convertLength() {
