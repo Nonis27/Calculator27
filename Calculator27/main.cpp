@@ -1,19 +1,28 @@
 #include <iostream>
 #include <cmath>
 #include <limits>
+#include <vector>
+#include <string>
+
+
+std::vector<std::string> history;
+
 
 double add(double a, double b) {
     double result = a + b;
+    history.push_back(std::to_string(a) + " + " + std::to_string(b) + " = " + std::to_string(result));
     return result;
 }
 
 double subtract(double a, double b) {
     double result = a - b;
+    history.push_back(std::to_string(a) + " - " + std::to_string(b) + " = " + std::to_string(result));
     return result;
 }
 
 double multiply(double a, double b) {
     double result = a * b;
+    history.push_back(std::to_string(a) + " * " + std::to_string(b) + " = " + std::to_string(result));
     return result;
 }
 
@@ -21,11 +30,13 @@ double divide(double a, double b) {
 
     if (b != 0) {
         double result = a / b;
+        history.push_back(std::to_string(a) + " / " + std::to_string(b) + " = " + std::to_string(result));
         return result;
 
     }
     else if (b == 0){
         std::cout << "You can't divide a number by 0." << std::endl;
+        history.push_back("Attempted to divide by zero.");
         return 0;
 
     }
@@ -38,16 +49,19 @@ double divide(double a, double b) {
 
 double raiseToPower(double a, double b) {
     double result = std::pow(a, b);
+    history.push_back("Raised " + std::to_string(a) + "to the power of " + std::to_string(b) + ": " + std::to_string(result));
     return result;
 }
 
 double squareRoot(double a) {
     double result = std::sqrt(a);
+    history.push_back("Calculated the square root of " + std::to_string(a) + ": " + std::to_string(result));
     return result;
 }
 
 double pythagoreanTheorem(double a, double b) {
     double result = std::sqrt(a * a + b * b);
+    history.push_back("Hypotenuse of sides " + std::to_string(a) + " and " + std::to_string(b) + ": " + std::to_string(result));
     return result;
 }
 
@@ -163,9 +177,18 @@ double convertLength() {
 
     }
 
+    history.push_back("Converted " + std::to_string(length) + " " + unit + " to " + std::to_string(convertedLength) + " " + targetUnit);
     std::cout << "The length in " << targetUnit << " is equal to " << convertedLength << std::endl;
     
     return 0;
+}
+
+void printHistory() {
+    std::cout << "Calculation History:" << std::endl;
+    for (const auto& entry : history) {
+        std::cout << entry << std::endl;
+
+    }
 }
 
 
@@ -179,23 +202,24 @@ int main() {
     std::cout << "6. Find square root" << std::endl;
 	std::cout << "7. Pythagorean Theorem" << std::endl;
     std::cout << "8. Convert length" << std::endl;
-    std::cout << "9. Exit program" << std::endl;
+    std::cout << "9. Print history" << std::endl;
+    std::cout << "10. Exit program" << std::endl;
 
     while (true) {
         double a, b;
         int choice;
 
-        std::cout << "\nChoose a number between 1-9: ";
+        std::cout << "\nChoose a number between 1-10: ";
         std::cin >> choice;
 
         if (std::cin.fail()) {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "-Invalid input. Please enter a number between 1-9." << std::endl;
+            std::cout << "-Invalid input. Please enter a number between 1-10." << std::endl;
             continue;
         }
 
-        if (choice == 9) {
+        if (choice == 10) {
             std::cout << "Exiting program.";
             break;
         }
@@ -243,8 +267,11 @@ int main() {
             case 8:
                 convertLength();
                 break;
+            case 9:
+                printHistory();
+                break;
             default:
-                std::cout << "Invalid input. Please try entering a number between 1-9." << std::endl;
+                std::cout << "Invalid input. Please try entering a number between 1-10." << std::endl;
         }
     }
     return 0;
