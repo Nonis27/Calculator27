@@ -71,9 +71,20 @@ double raiseToPower(double a, double b) {
 }
 
 double squareRoot(double a) {
-    double result = std::sqrt(a);
-    history.push_back("Calculated the square root of " + doubleToString(a) + ": " + doubleToString(result));
-    return result;
+
+    if (a < 0) {
+        history.push_back("Tried to calculate the square root of a negative number.");
+        std::cout << "Cannot calculate the square root of a negative number." << std::endl;
+        return -1;
+
+    }
+    else {
+        double result = std::sqrt(a);
+        history.push_back("Calculated the square root of " + doubleToString(a) + ": " + doubleToString(result));
+        return result;
+
+    }
+
 }
 
 double pythagoreanTheorem(double a, double b) {
@@ -269,11 +280,20 @@ int main() {
                 std::cin >> b;
                 std::cout << "Result: " << raiseToPower(a, b) << std::endl;
                 break;
-            case 6:
+            case 6: {
                 std::cout << "Enter a number: ";
                 std::cin >> a;
-                std::cout << "Result: " << squareRoot(a) << std::endl;
+                double result = squareRoot(a);
+
+                if (result != -1) {
+                    std::cout << "Result: " << result << std::endl;
+                }
+                else {
+                    std::cout << "Error: Cannot calculate the square root of a negative number." << std::endl;
+                }
                 break;
+            }
+
             case 7:
                 std::cout << "Enter the length of side A: ";
                 std::cin >> a;
