@@ -2,27 +2,44 @@
 #include <cmath>
 #include <limits>
 #include <vector>
-#include <string>
+#include <sstream>
 
 
 std::vector<std::string> history;
 
 
+std::string doubleToString(double value) {
+    std::ostringstream out;
+    out.precision(15);
+    out << std::fixed << value;
+    std::string str = out.str();
+
+    //Remove trailing zeros
+    str.erase(str.find_last_not_of('0') + 1, std::string::npos);
+    if (str.back() == '.') {
+        str.pop_back(); // If the last character is a '.', remove it
+
+    }
+
+    return str;
+}
+
+
 double add(double a, double b) {
     double result = a + b;
-    history.push_back(std::to_string(a) + " + " + std::to_string(b) + " = " + std::to_string(result));
+    history.push_back(doubleToString(a) + " + " + doubleToString(b) + " = " + doubleToString(result));
     return result;
 }
 
 double subtract(double a, double b) {
     double result = a - b;
-    history.push_back(std::to_string(a) + " - " + std::to_string(b) + " = " + std::to_string(result));
+    history.push_back(doubleToString(a) + " - " + doubleToString(b) + " = " + doubleToString(result));
     return result;
 }
 
 double multiply(double a, double b) {
     double result = a * b;
-    history.push_back(std::to_string(a) + " * " + std::to_string(b) + " = " + std::to_string(result));
+    history.push_back(doubleToString(a) + " * " + doubleToString(b) + " = " + doubleToString(result));
     return result;
 }
 
@@ -30,7 +47,7 @@ double divide(double a, double b) {
 
     if (b != 0) {
         double result = a / b;
-        history.push_back(std::to_string(a) + " / " + std::to_string(b) + " = " + std::to_string(result));
+        history.push_back(doubleToString(a) + " / " + doubleToString(b) + " = " + doubleToString(result));
         return result;
 
     }
@@ -49,19 +66,19 @@ double divide(double a, double b) {
 
 double raiseToPower(double a, double b) {
     double result = std::pow(a, b);
-    history.push_back("Raised " + std::to_string(a) + "to the power of " + std::to_string(b) + ": " + std::to_string(result));
+    history.push_back("Raised " + doubleToString(a) + " to the power of " + doubleToString(b) + ": " + doubleToString(result));
     return result;
 }
 
 double squareRoot(double a) {
     double result = std::sqrt(a);
-    history.push_back("Calculated the square root of " + std::to_string(a) + ": " + std::to_string(result));
+    history.push_back("Calculated the square root of " + doubleToString(a) + ": " + doubleToString(result));
     return result;
 }
 
 double pythagoreanTheorem(double a, double b) {
     double result = std::sqrt(a * a + b * b);
-    history.push_back("Hypotenuse of sides " + std::to_string(a) + " and " + std::to_string(b) + ": " + std::to_string(result));
+    history.push_back("Hypotenuse of sides " + doubleToString(a) + " and " + doubleToString(b) + ": " + doubleToString(result));
     return result;
 }
 
@@ -177,7 +194,7 @@ double convertLength() {
 
     }
 
-    history.push_back("Converted " + std::to_string(length) + " " + unit + " to " + std::to_string(convertedLength) + " " + targetUnit);
+    history.push_back("Converted " + doubleToString(length) + " " + unit + " to " + doubleToString(convertedLength) + " " + targetUnit);
     std::cout << "The length in " << targetUnit << " is equal to " << convertedLength << std::endl;
     
     return 0;
