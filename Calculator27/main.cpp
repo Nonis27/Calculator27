@@ -74,7 +74,6 @@ double squareRoot(double a) {
 
     if (a < 0) {
         history.push_back("Tried to calculate the square root of a negative number.");
-        std::cout << "Cannot calculate the square root of a negative number." << std::endl;
         return -1;
 
     }
